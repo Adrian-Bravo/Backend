@@ -1,8 +1,8 @@
-//import sequelize, {Model, DataTypes} from 'sequelize';
-const Sequelize = require('sequelize');
+import sequelize, {Model, DataTypes} from 'sequelize';
+// const Sequelize = require('sequelize');
 import { database } from '../database/db';
 
-export class Componente extends Sequelize.Model {
+export class Componente extends Model {
     public nombre!: string; 
     public especificacion!: string; 
     public cantidad!: number; 
@@ -19,22 +19,22 @@ export interface ComponenteI {
 Componente.init (
     {
         nombre: {
-            type: Sequelize.DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
 
         especificacion: {
-            type: Sequelize.DataTypes.TEXT,
+            type: DataTypes.TEXT,
             allowNull: false
         },
 
         cantidad: {
-            type: Sequelize.DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
 
         precio: {
-            type: Sequelize.DataTypes.FLOAT,
+            type: DataTypes.FLOAT,
             allowNull: false
         },
     },
