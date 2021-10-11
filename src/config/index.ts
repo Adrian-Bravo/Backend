@@ -27,6 +27,7 @@ export class App {
 
     private routes(){
         this.routePrv.componenteRoutes.routes(this.app);
+        this.routePrv.fabricanteRoutes.routes(this.app);
     }
     
     async listen(){
