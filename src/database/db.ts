@@ -4,7 +4,7 @@ const DB_NAME = 'db_almacen';
 
 const DB_USER = 'root';
 
-const DB_PASS = 'Siemprepicheo09#';
+const DB_PASS = 'Almacen08#';
 
 export const database = new Sequelize(
     DB_NAME,
