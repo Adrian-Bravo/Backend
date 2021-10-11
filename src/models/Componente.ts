@@ -7,3 +7,10 @@ export class Componente extends Model {
     public cantidad!: number; 
     public precio!: number; 
 }
+
+export interface ComponenteI {
+    nombre: string; 
+    especificacion: string; 
+    cantidad: number; 
+    precio: number; 
+}
