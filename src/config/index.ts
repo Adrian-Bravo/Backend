@@ -28,6 +28,8 @@ export class App {
     private routes(){
         this.routePrv.componenteRoutes.routes(this.app);
         this.routePrv.fabricanteRoutes.routes(this.app);
+        this.routePrv.aparatoRoutes.routes(this.app);
+        this.routePrv.tipo_electrodomesticosRoutes.routes(this.app);
     }
     
     async listen(){
