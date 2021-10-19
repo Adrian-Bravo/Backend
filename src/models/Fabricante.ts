@@ -1,5 +1,5 @@
 import { Model,DataTypes } from "sequelize";
-
+import{Componente} from"../models/Componente"
 // const Sequelize = require ('sequelize');
 import {database} from "../database/db";
 
@@ -37,3 +37,6 @@ Fabricante.init (
         timestamps: true
     }
 );
+
+Componente.hasMany(Fabricante)
+Fabricante.belongsTo(Componente)
