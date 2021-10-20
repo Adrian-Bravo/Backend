@@ -36,7 +36,6 @@ Fabricante.init (
         sequelize: database,
         timestamps: true
     }
-);
 
 Componente.hasMany(Fabricante)
 Fabricante.belongsTo(Componente)
