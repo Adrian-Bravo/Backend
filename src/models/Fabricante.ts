@@ -37,5 +37,7 @@ Fabricante.init (
         timestamps: true
     }
 
+);
+
 Componente.hasMany(Fabricante)
 Fabricante.belongsTo(Componente)
