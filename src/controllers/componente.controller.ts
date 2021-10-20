@@ -25,4 +25,37 @@ export class ComponenteController {
         }
     }
 
+
+    //mostrar uno solo o buscar
+    public async getOneComponente (req:Request, res:Response){
+        const {id}= req.params
+    
+        try {
+            const componente: ComponenteI | null = await Componente.findOne({where:{id:id}})
+            res.status(200).json({componente})
+        } catch (error) {
+            res.status(500).json({msg:"no se puede mostrar uno a uno"})
+        }
+    }
+
+    public async updateComponente (req:Request, res:Response){
+        const {id}= req.params
+        const body : ComponenteI = req.body
+
+        try {
+            const aparato_existente: ComponenteI | null = await Componente.findByPk(id)
+            await Componente.update(
+                body,{where:{id:id}}
+            )
+            const componente: ComponenteI | null = await Componente.findByPk(id)
+            
+            res.status(200).json({componente})
+
+        } catch (error) {
+            res.status(500).json({msg:"no se pudo actualizar"})
+        }
+    }
+
+
+
 }

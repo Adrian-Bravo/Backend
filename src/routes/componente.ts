@@ -7,5 +7,7 @@ export class ComponenteRoutes {
     public routes(app: Application): void {
         app.route('/componentes').get(this.componenteController.index);
         app.route('/crearcomponente').post(this.componenteController.createComponente);
+        app.route('/componente/:id').get(this.componenteController.getOneComponente);
+        app.route('/componente/:id').patch(this.componenteController.updateComponente);
     }
 }
