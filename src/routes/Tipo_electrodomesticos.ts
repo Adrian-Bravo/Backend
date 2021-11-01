@@ -10,5 +10,6 @@ export class Tipo_electrodomesticosRoutes {
         app.route('/tipo_electrodomesticos/:id').get(this.tipo_electrodomesticosController.getOneTipo_electrodomestico);
         app.route('/tipo_electrodomesticos').post(this.tipo_electrodomesticosController.creaTipo_electrodomesticos);
         app.route('/tipo_electrodomesticos/:id').patch(this.tipo_electrodomesticosController.updateTipo_electrodomesticos);
+        app.route('/borrartipo_electrodomesticos/:id').patch(this.tipo_electrodomesticosController.deleteTipo_electrodomesticos);
     }
 }
