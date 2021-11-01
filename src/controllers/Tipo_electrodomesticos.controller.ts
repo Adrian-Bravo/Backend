@@ -24,9 +24,27 @@ export class Tipo_electrodomesticosController{
     }
     // INGRESAR DATOS
     public async creaTipo_electrodomesticos(req:Request, res:Response){
-        const body: Tipo_electrodomesticos1 =req.body
+        const {
+            id,
+            nombre,
+            caracteristicas
+        } =req.body
         try {
-            const tipo_electrodomesticos =await Tipo_electrodomesticos.create(body)
+            let body: Tipo_electrodomesticos1 = {
+                nombre,
+                caracteristicas
+            }
+            const tipo_electrodomesticosExist: Tipo_electrodomesticos | null = await Tipo_electrodomesticos.findOne(
+                {
+                    where: { 
+                            nombre: body.nombre,
+                           },
+                }
+            );
+            if (tipo_electrodomesticosExist){
+                return res.status(400).json({msg: 'Este tipo de electrodomestico ya existe, intente nuevamente'})
+            }
+            const tipo_electrodomesticos = await Tipo_electrodomesticos.create(body);
             res.status(200).json({tipo_electrodomesticos})
         } catch (error) {
             res.status(500).json({msg: "OPERACION INVALIDA"})
