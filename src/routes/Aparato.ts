@@ -8,7 +8,8 @@ export class AparatoRoutes {
     public routes(app: Application): void {
         app.route('/aparato').get(this.aparatoController.getAparato)
         app.route('/aparato/:id').get(this.aparatoController.getOneAparato)
-        app.route('/aparato').post(this.aparatoController.creaAparato)
+        app.route('/aparato').post(this.aparatoController.crearAparato)
         app.route('/aparato/:id').patch(this.aparatoController.updateAparato)
+        app.route('/borraraparato/:id').patch(this.aparatoController.deleteAparato)
           }
 }
