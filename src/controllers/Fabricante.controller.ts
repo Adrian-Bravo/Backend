@@ -20,6 +20,16 @@ export class FabricanteController{
             res.status(500).json({msg:'Error interno: No hay conexión con la base de datos'})
         }
     }
+    //mostrar uno solo o buscar
+    public async getOneFabricante (req:Request, res:Response){
+        const {id}= req.params
 
+        try {
+            const aparato:FabricanteI | null =await Fabricante.findOne({where:{id:id}})
+            res.status(200).json({Fabricante})
+        } catch (error) {
+            res.status(500).json({msg:"no se puede mostrar uno a uno"})
+        }
+    }
     
 }
