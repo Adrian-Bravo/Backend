@@ -1,6 +1,7 @@
 import sequelize, {Model, DataTypes} from "sequelize";
 import {database} from '../database/db';
 import {Componente} from "../models/Componente";
+import { Tipo_electrodomesticos } from "./Tipo_electrodomesticos";
 export class Aparato extends Model {
     public descripcion!: string;
     public status!:boolean;
@@ -30,6 +31,7 @@ Aparato.init (
         timestamps:true
     }
 );
-
+Tipo_electrodomesticos.hasMany(Aparato);
+Aparato.belongsTo(Tipo_electrodomesticos);
 Aparato.hasMany(Componente);
 Componente.belongsTo(Aparato);
