@@ -31,5 +31,26 @@ export class FabricanteController{
             res.status(500).json({msg:"no se puede mostrar uno a uno"})
         }
     }
+    // INGRESAR DATOS
+    public async crearFabricante(req:Request, res:Response){
+        const {
+            id,
+            nombre,
+            domicilio
+            
+        } =req.body
+        try {
+            let body: FabricanteI = {
+                nombre,
+                domicilio
+                
+            }
+            const fabricante = await Fabricante.create(body);
+            res.status(200).json({fabricante})
+        } catch (error) {
+            res.status(500).json({msg: "OPERACION INVALIDA"})
+            
+        }
+    }
     
 }
