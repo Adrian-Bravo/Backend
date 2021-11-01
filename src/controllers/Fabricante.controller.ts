@@ -25,6 +25,16 @@ export class FabricanteController{
             
         }
     }
+    public async getOneFabricante (req:Request, res:Response){
+            const {id}= req.params
+    
+            try {
+                const fabricante:FabricanteI | null =await Fabricante.findOne({where:{id:id}})
+                res.status(200).json({fabricante})
+            } catch (error) {
+                res.status(500).json({msg:"no se puede mostrar uno a uno"})
+            }
+        } 
 
 
 
