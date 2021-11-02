@@ -36,13 +36,15 @@ export class FabricanteController{
         const {
             id,
             nombre,
-            domicilio
+            domicilio,
+            status
             
         } =req.body
         try {
             let body: FabricanteI = {
                 nombre,
-                domicilio
+                domicilio,
+                status
                 
             }
             const fabricante = await Fabricante.create(body);
@@ -58,12 +60,14 @@ export class FabricanteController{
         const {
             id,
             nombre,
-            domicilio
+            domicilio,
+            status
         } =req.body
         try {
             let body: FabricanteI = {
                 nombre,
-                domicilio
+                domicilio,
+                status
             }
             const fabricanteExist: FabricanteI | null =await Fabricante.findByPk(pk)
             
