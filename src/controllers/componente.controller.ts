@@ -64,21 +64,59 @@ export class ComponenteController {
     }
 
     public async updateComponente (req:Request, res:Response){
-        const {id}= req.params
-        const body : ComponenteI = req.body
+        // const {id}= req.params
+        // const body : ComponenteI = req.body
+
+        // try {
+        //     const aparato_existente: ComponenteI | null = await Componente.findByPk(id)
+        //     await Componente.update(
+        //         body,{where:{id:id}}
+        //     )
+        //     const componente: ComponenteI | null = await Componente.findByPk(id)
+            
+        //     res.status(200).json({componente})
+
+        // } catch (error) {
+        //     res.status(500).json({msg:"no se pudo actualizar"})
+        // }
+
+        const {id: pk} = req.params
+
+        const {
+            id, 
+            nombre, 
+            especificacion, 
+            cantidad, 
+            precio
+        } = req.body
 
         try {
-            const aparato_existente: ComponenteI | null = await Componente.findByPk(id)
+            let body: ComponenteI = {
+                nombre,
+                especificacion,
+                cantidad,
+                precio
+            }
+
+            const componenteExist: ComponenteI | null = await Componente.findByPk(pk)
+
+            if(!componenteExist) return res.status(500).json({msg: 'El componente no existe'})
+
             await Componente.update(
-                body,{where:{id:id}}
+                body,
+                {
+                    where: {id: pk}
+                }
             )
-            const componente: ComponenteI | null = await Componente.findByPk(id)
-            
+
+            const componente: ComponenteI | null = await Componente.findByPk(pk)
             res.status(200).json({componente})
 
+
         } catch (error) {
-            res.status(500).json({msg:"no se pudo actualizar"})
+            return res.status(500).json({msg:'Error Internal'})
         }
+
     }
 
 
