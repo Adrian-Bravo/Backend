@@ -9,20 +9,45 @@ export class ComponenteController {
     }
 
     public async createComponente(req: Request, res: Response){
-        const body: ComponenteI = req.body;
+        // const body: ComponenteI = req.body;
+
+        // try {
+        //     if((!body.nombre && !body.especificacion && !body.cantidad && !body.precio)){
+        //         return res.status(400).json({msg: 'Some data is requiered'});
+        //     }
+
+        //     const componente = await Componente.create(body);
+        //     res.status(200).json({componente})
+
+
+        // } catch (error) {
+            
+        // }
+
+        const {
+            id, 
+            nombre, 
+            especificacion, 
+            cantidad, 
+            precio
+        } = req.body;
 
         try {
-            if((!body.nombre && !body.especificacion && !body.cantidad && !body.precio)){
-                return res.status(400).json({msg: 'Some data is requiered'});
+            let body: ComponenteI = {
+                nombre,
+                especificacion,
+                cantidad,
+                precio
             }
 
             const componente = await Componente.create(body);
             res.status(200).json({componente})
 
-
         } catch (error) {
-            
+            return res.status(500).json({msg:'Error Internal'})
         }
+
+
     }
 
 
