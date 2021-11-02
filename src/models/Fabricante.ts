@@ -6,12 +6,14 @@ import {database} from "../database/db";
 export class Fabricante extends Model {
     public nombre!: string;
     public domicilio!: string;
+    public status!: boolean;
     
 }
 
 export interface FabricanteI {
      nombre: string;
      domicilio: string;
+     status: boolean;
      
 }
 
@@ -28,7 +30,12 @@ Fabricante.init (
             allowNull: false
 
         },
-        
+        status:{
+            type: DataTypes.ENUM,
+            values:['Activido','Desactivado'],
+            defaultValue: 'Activido',
+            allowNull: false
+        }
 
     },
     {
