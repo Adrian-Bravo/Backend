@@ -52,6 +52,7 @@ export class FabricanteController{
             
         }
     }
+
     //actualizar
     public async updateFabricante (req:Request, res:Response){
         const {id:pk} = req.params
@@ -81,5 +82,26 @@ export class FabricanteController{
             res.status(500).json({msg:"No se pudo actualizar"})
         }
     }
-    
+ public async deleteFabricante (req:Request, res:Response){
+        const {id:pk} = req.params;
+
+        try {
+            const fabricanteExist: FabricanteI | null = await Fabricante.findByPk(pk);
+
+            if(!fabricanteExist) return res.status(500).json({msg: '¡Ese fabricante no existe en la base de datos!'});
+            
+            await Fabricante.update(
+                {
+                status: "Desactivado"
+                },
+                {
+                    where:{id:pk}
+                }
+            );
+            return res.status(200).json({msg: 'Este fabricante fue eliminado !'})
+        } catch (error) {
+            
+        }
+    }
+   
 }
