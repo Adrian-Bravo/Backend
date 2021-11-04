@@ -119,6 +119,26 @@ export class ComponenteController {
 
     }
 
+    public async deleteComponente(req: Request, res: Response){
+        const { id: pk } = req.params;
+
+        try {
+            const componenteExit: ComponenteI | null = await Componente.findByPk(pk)
+            if(!componenteExit) return res.status(500).json({msg:'El componente no existe'})
+
+            await Componente.destroy(
+                {
+                    where: {id:pk}
+                }
+            )
+
+            return res.status(200).json({msg:'Componente eliminado'})
+
+        } catch (error) {
+            return res.status(500).json({msg:'Error Internal'})
+        }
+    }
+
 
 
 }

@@ -9,5 +9,6 @@ export class ComponenteRoutes {
         app.route('/crearcomponente').post(this.componenteController.createComponente);
         app.route('/componente/:id').get(this.componenteController.getOneComponente);
         app.route('/componente/:id').patch(this.componenteController.updateComponente);
+        app.route('/componente/:id').delete(this.componenteController.deleteComponente);
     }
 }
