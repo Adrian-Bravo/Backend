@@ -2,10 +2,22 @@ import { Request, Response } from "express";
 import { Componente, ComponenteI } from "../models/Componente";
 
 export class ComponenteController {
-    public index(req: Request, res: Response) {
-        Componente.findAll({})
-            .then((componentes: Array<Componente>) => res.json(componentes))
-            .catch((err: Error) => res.status(500).json(err));
+    public async getComponente(req: Request, res: Response) {
+        // Componente.findAll({})
+        //     .then((componentes: Array<Componente>) => res.json(componentes))
+        //     .catch((err: Error) => res.status(500).json(err));
+
+        try {
+            const componente = await Componente.findAll()
+            if(!componente){
+                res.status(400).json({msg: 'No hay ningun registro'})
+            }
+            
+            return res.status(200).json({componente});
+
+        } catch (error) {
+            return res.status(500).json({msg:'Error Internal'})
+        }
     }
 
     public async createComponente(req: Request, res: Response){
