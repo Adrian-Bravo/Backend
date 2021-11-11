@@ -107,5 +107,19 @@ export class FabricanteController{
             
         }
     }
-   
+    // public async createpedido(req:Request, res:Response){
+    //     const {
+    //         nombre,
+    //         domicilio,
+    //         status,
+    //         ComponenteId
+
+    //     }=req.body
+
+    //     try {
+    //         let body
+    //     } catch (error) {
+            
+    //     }
+    // }
 }

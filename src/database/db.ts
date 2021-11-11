@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 
 const DB_NAME = 'db_almacen';
 
-const DB_USER = 'root';
+const DB_USER = 'ivonneC';
 
-const DB_PASS = 'Almacen08#';
+const DB_PASS = 'Ivonne.123';
 
 export const database = new Sequelize(
     DB_NAME,
