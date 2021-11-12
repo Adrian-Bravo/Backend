@@ -2,7 +2,8 @@ import { Model,DataTypes } from "sequelize";
 import{Componente} from"../models/Componente"
 // const Sequelize = require ('sequelize');
 import {database} from "../database/db";
-import { ComponenteFabricante } from "./ComponenteFabricante";
+
+
 
 export class Fabricante extends Model {
     public nombre!: string;
@@ -47,5 +48,5 @@ Fabricante.init (
 
 );
 
-Componente.belongsToMany(Fabricante,{through: ComponenteFabricante});
-Fabricante.belongsToMany(Componente,{through:ComponenteFabricante});
+Componente.hasMany(Fabricante);
+Fabricante.belongsTo(Componente);

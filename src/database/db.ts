@@ -6,6 +6,7 @@ const DB_USER = 'ivonneC';
 
 const DB_PASS = 'Ivonne.123';
 
+
 export const database = new Sequelize(
     DB_NAME,
     DB_USER,
