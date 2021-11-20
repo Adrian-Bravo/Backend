@@ -25,7 +25,7 @@ export class FabricanteController{
         const {id}= req.params
 
         try {
-            const aparato:FabricanteI | null =await Fabricante.findOne({where:{id:id}})
+            const fabricante:FabricanteI | null =await Fabricante.findOne({where:{id:id}})
             res.status(200).json({Fabricante})
         } catch (error) {
             res.status(500).json({msg:"no se puede mostrar uno a uno"})
