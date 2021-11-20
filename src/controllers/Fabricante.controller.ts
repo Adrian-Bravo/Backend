@@ -26,7 +26,7 @@ export class FabricanteController{
 
         try {
             const fabricante:FabricanteI | null =await Fabricante.findOne({where:{id:id}})
-            res.status(200).json({Fabricante})
+            res.status(200).json({fabricante})
         } catch (error) {
             res.status(500).json({msg:"no se puede mostrar uno a uno"})
         }
