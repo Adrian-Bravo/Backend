@@ -8,7 +8,7 @@ export class FabricanteController{
         try {
             const fabricante = await Fabricante.findAll(//la variable user obtiene un registro de todos los usuarios que estan en el modelo User
             {
-                where: {status:"Activado"}
+                where: {status:"Activido"}
             }
             )
             if (!fabricante){ //if (users) si hay registros y (!users) no hay registros
