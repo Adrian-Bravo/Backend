@@ -16,7 +16,7 @@ export class AparatoController {
                 const aparato:AparatoI | null =await Aparato.findOne({where:{id:id}})
                 res.status(200).json({aparato})
             } catch (error) {
-                res.status(500).json({msg:"no se puede mostrar uno a uno"})
+                res.status(500).json({msg:"Los aparatos no se pueden mostrar uno a uno"})
             }
         }
         // INGRESAR DATOS
