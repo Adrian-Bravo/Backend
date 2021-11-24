@@ -34,8 +34,8 @@ Fabricante.init (
         },
         status:{
             type: DataTypes.ENUM,
-            values:['Activado','Desactivado'],
-            defaultValue: 'Activado',
+            values:['Activido','Desactivado'],
+            defaultValue: 'Activido',
             allowNull: false
         }
 
