@@ -3,22 +3,13 @@ import {Tipo_electrodomesticos, Tipo_electrodomesticos1} from "../models/Tipo_el
 
 export class Tipo_electrodomesticosController{  
     // MOSTRAR LOS CAMPOS DE LA TABLA
-    public async getTipo_electrodomesticos(req:Request, res:Response){
-        try {
-            const tipo_electrodomesticos = await Tipo_electrodomesticos.findAll(//la variable user obtiene un registro de todos los usuarios que estan en el modelo User
-            {
-                where: {status:"Activado"}
-            }
-            )
-            if (!tipo_electrodomesticos){ //if (users) si hay registros y (!users) no hay registros
-                res.status(400).json({msg:'Tipo de electrodomesticos incorrecto'}) //Retorna la respuesta: errores 400 0 500 si no hay registros
-            }
-            return res.status(200).json({tipo_electrodomesticos}) //Retorna usuarios
-        
-        }catch (error){
-            res.status(500).json({msg:'Error internal:no connection to the database'})
-        }
+   
+    public getTipo_electrodomesticos (req:Request, res: Response){
+        Tipo_electrodomesticos.findAll({where:{status:"Activado"}})
+        .then((tipo_electrodomesticos: Array<Tipo_electrodomesticos>) => res.json(tipo_electrodomesticos))
+        .catch((err: Error) => res.status(500).json(err));
     }
+
     //mostrar uno solo o buscar
     public async getOneTipo_electrodomestico (req:Request, res:Response){
         const {id}= req.params
@@ -30,19 +21,20 @@ export class Tipo_electrodomesticosController{
             res.status(500).json({msg:"no se puede mostrar uno a uno"})
         }
     }
+   
     // INGRESAR DATOS
     public async creaTipo_electrodomesticos(req:Request, res:Response){
         const {
             id,
             nombre,
             caracteristicas,
-            status
+            status,
         } =req.body
         try {
             let body: Tipo_electrodomesticos1 = {
                 nombre,
                 caracteristicas,
-                status
+                status,
             }
             const tipo_electrodomesticosExist: Tipo_electrodomesticos | null = await Tipo_electrodomesticos.findOne(
                 {
