@@ -1,8 +1,9 @@
-import sequelize, {Model, DataTypes} from "sequelize";
+import {Model, DataTypes} from "sequelize";
 import {database} from '../database/db';
 import { Aparato } from "../models/Aparato";
 
 export class Tipo_electrodomesticos extends Model {
+    public id!:number;
     public nombre!: string;
     public caracteristicas!:string;
     public status!: boolean;

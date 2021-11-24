@@ -2,23 +2,12 @@ import { Request, Response } from "express";
 import { Aparato, AparatoI } from "../models/Aparato";
 
 export class AparatoController {
-    public async getAparato(req:Request, res:Response){
-        try {
-            const aparato = await Aparato.findAll(//la variable user obtiene un registro de todos los usuarios que estan en el modelo User
-            {
-                where: {status:"Activado"}
-            }
-            )
-            if (!aparato){ //if (users) si hay registros y (!users) no hay registros
-                res.status(400).json({msg:'No hay aparatos registrados'}) //Retorna la respuesta: errores 400 0 500 si no hay registros
-            }
-            return res.status(200).json({aparato}) //Retorna usuarios
-        
-        }catch (error){
-            res.status(500).json({msg:'Error interno: No hay conexión con la base de datos'})
+    
+        public getAparato (req:Request, res: Response){
+            Aparato.findAll({where:{status:"Activado"}})
+            .then((aparato: Array<Aparato>) => res.json(aparato))
+            .catch((err: Error) => res.status(500).json(err));
         }
-        }
-
         //mostrar uno solo o buscar
         public async getOneAparato (req:Request, res:Response){
             const {id}= req.params
@@ -27,7 +16,7 @@ export class AparatoController {
                 const aparato:AparatoI | null =await Aparato.findOne({where:{id:id}})
                 res.status(200).json({aparato})
             } catch (error) {
-                res.status(500).json({msg:"no se puede mostrar uno a uno"})
+                res.status(500).json({msg:"Los aparatos no se pueden mostrar uno a uno"})
             }
         }
         // INGRESAR DATOS
