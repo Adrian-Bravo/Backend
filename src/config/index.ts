@@ -1,7 +1,7 @@
 import express, { Application } from "express";
 import morgan from 'morgan';
 import { Routes } from "../routes/index";
-
+var cors = require ("cors");
 export class App {
     app: Application;
     public routePrv: Routes = new Routes();
@@ -20,6 +20,7 @@ export class App {
     }
 
     private middlewares(){
+        this.app.use(cors());
         this.app.use(morgan('dev'));
         this.app.use(express.json());
         this.app.use(express.urlencoded( {extended: false} ));
